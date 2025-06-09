@@ -1,0 +1,41 @@
+plugins {
+    id 'com.android.application'
+    id 'com.chaquo.python' // Enable Chaquopy
+}
+
+android {
+    namespace 'com.example.amooti'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.example.amooti"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        // Chaquopy Python settings
+        python {
+            buildPython "C:/path/to/python.exe" // optional; leave blank if Chaquopy auto-detects
+            pip {
+                install "onnxruntime-genai"
+            }
+        }
+
+        ndk {
+            abiFilters "armeabi-v7a", "x86_64"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.chaquo.python:chaquopy:14.0.0'
+}

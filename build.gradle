@@ -2,11 +2,21 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        // ✅ Add this line
-        maven { url "https://chaquo.com/maven" }
+        maven { url "https://chaquo.com/maven" }  // Chaquopy repo
     }
     dependencies {
         classpath "com.android.tools.build:gradle:8.1.0"
-        classpath "com.chaquo.python:gradle:14.0.0"
+        classpath "com.chaquo.python:gradle:14.0.0"  // Chaquopy plugin
     }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }

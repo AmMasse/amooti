@@ -5,23 +5,24 @@ plugins {
 
 android {
     namespace 'com.example.amooti'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.amooti"
-        minSdk 24
-        targetSdk 33
+        minSdk 21
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
         python {
+            version "3.8"
             pip {
                 install "onnxruntime-genai"
             }
         }
 
         ndk {
-            abiFilters "armeabi-v7a", "x86_64"
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"  # Reduce APK size if needed
         }
     }
 
@@ -31,9 +32,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.chaquo.python:chaquopy:14.0.0'
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "com.google.android.material:material:1.10.0"
 }

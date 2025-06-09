@@ -2,6 +2,8 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        // ✅ Add this line
+        maven { url "https://chaquo.com/maven" }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:8.1.0"

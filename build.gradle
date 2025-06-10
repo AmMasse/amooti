@@ -6,7 +6,6 @@ plugins {
 }
 
 repositories {
-    google()       // For Android libraries
     mavenCentral() // For ONNX Runtime
 }
 

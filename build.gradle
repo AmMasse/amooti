@@ -5,6 +5,11 @@ plugins {
     id 'com.chaquo.python' version '16.1.0' apply false
 }
 
+repositories {
+    google()       // For Android libraries
+    mavenCentral() // For ONNX Runtime
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
